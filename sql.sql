@@ -1,11 +1,14 @@
+drop table if  exists UserStories;
+drop table if  exists Proyectos;
+
 create table Proyectos(
-id int primary key,
+id serial primary key,
 	nombre varchar(200) not null,
 	descripcion varchar(1000) not null
 );
 
 create table UserStories (
-id INT primary key,
+id serial primary key,
 	codigo varchar(45) not null,
 	nombre varchar(500) not null,
 	card TEXT,
@@ -13,3 +16,6 @@ id INT primary key,
 	confirmation TEXT,
 	idproyecto int   references Proyectos (id) 
 );
+
+
+
