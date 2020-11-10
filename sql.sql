@@ -11,5 +11,5 @@ id INT primary key,
 	card TEXT,
 	conversation TEXT,
 	confirmation TEXT,
-	foreign key(idProyecto) references Proyectos (id) 
+	idproyecto int   references Proyectos (id) 
 );
