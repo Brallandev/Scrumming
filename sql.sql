@@ -1,5 +1,5 @@
 create table Proyectos(
-id serial primary key,
+id int primary key,
 	nombre varchar(200) not null,
 	descripcion varchar(1000) not null
 );
