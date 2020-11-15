@@ -1,0 +1,11 @@
+MASTER USERNAME:
+postgres
+
+MASTER PASSWORD:
+proyecto_programacion
+
+Endpoint:
+database-1.cpdwyuazzw9j.us-east-1.rds.amazonaws.com
+
+Port
+5432
