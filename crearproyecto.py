@@ -1,4 +1,6 @@
 import psycopg2
+import string
+
 from  conexion import dc
 is_connection= True
 try:
@@ -7,6 +9,8 @@ try:
 except :
     print("No se pudo conectar a la base de datos")
     is_connection=False
+    input("\n"+"Pulse una tecla para Salir")
+    exit()
 
 
 
@@ -23,6 +27,8 @@ def crear (nombre,descripcion):
         conexion.commit()
 
         cursor.close()
+
+        print("El proyecto "+ nombre +" se creo correctamente")
 
 
     
@@ -42,5 +48,35 @@ def consultar():
             print(f'id={id}\tnombre={nombre}\t descripcion={descripcion}')
         Cursor.close()
         conexion.close()
-crear ("prueba dos","prueba02")
-consultar()
+
+
+def correr_inicio():
+
+    print("---CREACION DE PROYECTO---")
+
+    while True:
+
+        nombre = input("\n"+"Nombre del Proyecto: ")
+        validar = len(nombre)
+
+        if validar <= 200:
+            break
+
+        print("El contenido escrito supera el parametro de 200 caracteres, intentelo nuevamente")
+
+
+    while True:
+
+        descripcion = input("\n"+"Descripcion del Proyecto: ")
+        validar = len(descripcion)
+
+        if validar <= 1000:
+            break
+
+        print("El contenido escrito supera el parametro de 1000 caracteres, intentelo nuevamente")    
+
+        
+    
+    crear(nombre,descripcion)
+
+    input("pulse la tecla para continuar: ")

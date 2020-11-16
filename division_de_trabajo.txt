@@ -15,7 +15,7 @@ Conexion:Cuervo
 
 Modelado de las vistas de usuario.
 Inicio:Esteban
-Crear Proyecto:Alejandro
+Crear Proyecto:Esteban - Kevin
 Directorio de proyectos:Alejandro
 Detalle de proyecto:Alejandro
 Creacion User story:Esteban
