@@ -1,5 +1,4 @@
 import psycopg2
-import string
 
 from  conexion import dc
 is_connection= True
@@ -30,24 +29,7 @@ def crear (nombre,descripcion):
 
         print("El proyecto "+ nombre +" se creo correctamente")
 
-
     
-def consultar():
-    if is_connection==True:
-
-        Cursor = conexion.cursor()
-
-        Cursor.execute('select * from Proyectos ')
-
-        filas= Cursor.fetchall()
-
-        for fila in filas:
-            id=fila[0]
-            nombre= fila[1]
-            descripcion=fila[2]
-            print(f'id={id}\tnombre={nombre}\t descripcion={descripcion}')
-        Cursor.close()
-        conexion.close()
 
 
 def correr_inicio():
