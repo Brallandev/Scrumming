@@ -76,14 +76,7 @@ def seleccionar_proyecto():
         seleccionar_proyecto()
 
 
-<<<<<<< HEAD
 def Ejecutar_Seleccion(Opcion):
-=======
-def Ejecutar_Seleccion():
-
-    print("Ejecutar seleccion")
-
->>>>>>> 783d89ecc28368f5642c93a59848718518d13678
 
     #recibe los datos del proyecto selecionado en un arreglo.
     buscar=consulta_especifica(Opcion)
