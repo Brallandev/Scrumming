@@ -67,17 +67,64 @@ def Ejecutar_Seleccion(Opcion):
         
         fila = fila+1
 
-def Opciones_UStories():
-
-    Menu_UStroies = (
-
+ 
+Menu_UStroies = (
     "1) Crear User Storie"+"\n"
     "2) Ver User Storie"+"\n"
     "3) Editar User Storie"+"\n"
     "4) Eliminar User Storie"+"\n"
-    "5) Salir"+"\n"
-    )
+    "5) Salir"+"\n")
+
+def Opciones_UStories():
+
+    print("Esto esta corriendo")
 
     print(Menu_UStroies)
 
-    input("todo esta funcionando")
+    Opcion = int(input("cual opcion desea escoger: "))
+
+    if Opcion == 1:
+        
+        Utilidades.clear()
+        print("Crear User Storie")
+        input("Pulse una tecla para continuar")
+        Utilidades.clear()
+        Opciones_UStories()
+
+    elif Opcion == 2:
+
+        Utilidades.clear()
+        print("Crear User Storie")
+        input("Pulse una tecla para continuar")
+        Utilidades.clear()
+        Opciones_UStories()
+    
+    elif Opcion == 3:
+
+        Utilidades.clear()
+        print("Crear User Storie")
+        input("Pulse una tecla para continuar")
+        Utilidades.clear()
+        Opciones_UStories()
+
+    elif Opcion == 4:
+
+        Utilidades.clear()
+        print("Crear User Storie")
+        input("Pulse una tecla para continuar")
+        Utilidades.clear()
+        Opciones_UStories()
+
+    elif Opcion == 5:
+
+        Utilidades.clear()
+        print("Crear User Storie")
+        input("Pulse una tecla para continuar")
+        Utilidades.clear()
+        Opciones_UStories()
+    
+    else:
+
+        input("La seleccion escogida no existe, pulse cualquier tecla para intentarlo nuevamente")
+
+        Opciones_UStories()
