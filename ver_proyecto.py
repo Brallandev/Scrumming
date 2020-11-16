@@ -1,4 +1,6 @@
 import psycopg2
+import Utilidades
+import Proyecto_y_user_stories
 from conexion import dc
 
 is_connection=True
@@ -33,28 +35,6 @@ def consultar():
             descripcion=fila[2]
             print(f'[{id}] {nombre} \n')
             print(f'Descripcion:{descripcion}'+"\n")
-        
-        
-    
-def consulta_especifica(id):
-
-    if is_connection==True:
-        sql ='select * from Proyectos where id=%s'
-        parametros=(str(id))
-        Cursor.execute(sql,parametros)
-
-        filas= Cursor.fetchall()
-        
-        datos=[]
-
-        for fila in filas:
-            datos.append(fila[0])
-            datos.append(fila[1])
-            datos.append(fila[2])
-
-        Cursor.close()
-
-        return datos
 
         
 
@@ -69,20 +49,15 @@ def seleccionar_proyecto():
     Valor_Verificacion= Opcion in Validacion
 
     if Valor_Verificacion == True:
-        Ejecutar_Seleccion(Opcion)
+        Proyecto_y_user_stories.Ejecutar_Seleccion(Opcion)
+        Proyecto_y_user_stories.Opciones_UStories()
     
     else:
         print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
         seleccionar_proyecto()
 
 
-def Ejecutar_Seleccion(Opcion):
-
-    #recibe los datos del proyecto selecionado en un arreglo.
-    buscar=consulta_especifica(Opcion)
-
-
-
+seleccionar_proyecto()
 
 
 
