@@ -3,6 +3,16 @@ from datos_conexion import dc
 
 is_connection=True
 
+try:
+     conexion=psycopg2.connect(**dc)
+
+except :
+    print("No se pudo conectar a la base de datos")
+    is_connection=False
+    input("\n"+"Pulse una tecla para Salir")
+    exit()
+
+
 def consultar():
     if is_connection==True:
 
