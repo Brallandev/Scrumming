@@ -10,8 +10,4 @@ dc = {
     'password' : 'proyecto_programacion'
 }
 
-# Conexión a la base de datos
-conexion = psycopg2.connect(**dc)
 
-
-print('conectado')
