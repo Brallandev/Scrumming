@@ -5,6 +5,7 @@ is_connection=True
 
 try:
      conexion=psycopg2.connect(**dc)
+     Cursor = conexion.cursor()
 
 except :
     print("No se pudo conectar a la base de datos")
@@ -21,8 +22,6 @@ def consultar():
 
     if is_connection==True:
 
-        Cursor = conexion.cursor()
-
         Cursor.execute('select * from Proyectos ')
 
         filas= Cursor.fetchall()
@@ -34,36 +33,54 @@ def consultar():
             descripcion=fila[2]
             print(f'[{id}] {nombre} \n')
             print(f'Descripcion:{descripcion}'+"\n")
-        Cursor.close()
-        conexion.close()
+        
+        
     
+def consulta_especifica(id):
 
+    if is_connection==True:
+        sql ='select * from Proyectos where id=%s'
+        parametros=(str(id))
+        Cursor.execute(sql,parametros)
+
+        filas= Cursor.fetchall()
+        
+        datos=[]
+
+        for fila in filas:
+            datos.append(fila[0])
+            datos.append(fila[1])
+            datos.append(fila[2])
+
+        Cursor.close()
+
+        return datos
+
+        
 
 def seleccionar_proyecto():
 
     global Validacion
+
+    consultar()
 
     Opcion = int(input("Digite el numero del proyecto que desea ver: "))
 
     Valor_Verificacion= Opcion in Validacion
 
     if Valor_Verificacion == True:
-        Ejecutar_Seleccion()
+        Ejecutar_Seleccion(Opcion)
     
     else:
         print("El valor seleccionado no existe, vuelva a intentarlo"+"\n")
         seleccionar_proyecto()
 
 
-def Ejecutar_Seleccion():
+def Ejecutar_Seleccion(Opcion):
 
-    print("Esta Vivo")
+    #recibe los datos del proyecto selecionado en un arreglo.
+    buscar=consulta_especifica(Opcion)
 
-
-
-
-consultar()
-seleccionar_proyecto()
 
 
 

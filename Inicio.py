@@ -29,7 +29,7 @@ def Seleccion ():
         
     elif Opcion == 2:
         Utilidades.clear()
-        ver_proyecto.consultar()
+        ver_proyecto.seleccionar_proyecto()
         Utilidades.clear()
         print(Menu)
         Seleccion()  
