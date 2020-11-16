@@ -1,4 +1,5 @@
 import crearproyecto
+import ver_proyecto
 import Utilidades
 
 # Menu Proyectos
@@ -27,7 +28,11 @@ def Seleccion ():
         Seleccion()  
         
     elif Opcion == 2:
-        print("Ver Proyecto")
+        Utilidades.clear()
+        ver_proyecto.consultar()
+        Utilidades.clear()
+        print(Menu)
+        Seleccion()  
     
     elif Opcion == 3:
         exit()
