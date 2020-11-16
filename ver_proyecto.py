@@ -51,14 +51,13 @@ def seleccionar_proyecto():
         Ejecutar_Seleccion()
     
     else:
-        print("El valor seleccionado no existe, vuelva a intentarlo"+"\n")
+        print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
         seleccionar_proyecto()
 
 
 def Ejecutar_Seleccion():
 
-    print("Esta Vivo")
-
+    print("Ejecutar seleccion")
 
 
 
