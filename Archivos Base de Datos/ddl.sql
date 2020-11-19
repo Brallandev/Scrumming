@@ -2,7 +2,7 @@ drop table if  exists UserStories;
 drop table if  exists Proyectos;
 
 create table Proyectos(
-id serial primary key,
+	id serial primary key,
 	nombre varchar(200) not null,
 	descripcion varchar(1000) not null
 );
