@@ -12,6 +12,8 @@ except :
     input("\n"+"Pulse una tecla para Salir")
     exit()
 
+#esta opcion conecta a la base de datos para realizar la elminacion de campos que se encuentran alli
+
 def eliminar(id):
     cursor = conexion.cursor()
     sql = 'delete from proyectos where id=%s'
