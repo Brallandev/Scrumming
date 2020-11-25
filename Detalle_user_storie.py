@@ -20,28 +20,27 @@ Validacion = []
 #Se hace la consulta del User storie en la base de datos
 
 def Consulta():
-        global Validacion
-        if is_connection==True:
+ global Validacion
+        
+    if is_connection==True:
 
-        Cursor.execute('select * from UserStories')
+     Cursor.execute('select * from UserStories')
 
-        filas= Cursor.fetchall()
+     filas= Cursor.fetchall()
 
-        for fila in filas:
-            id=fila[0]
-            Validacion.append(id)
-            codigo=fila[1]
-            nombre=fila[2]
-            card=fila[3]
-            conversation=fila[4]
-            confirmation=fila[5]
-
-
-            print(f'[{id}] {nombre} \n')
-            print(f'Codigo del user:{codigo}'+"\n")
-            print(f'Card del user:{card}'+"\n")
-             print(f'Conversation del user:{Conversation}'+"\n")
-              print(f'Confirmation del user:{codigo}'+"\n")
+      for fila in filas:
+         id=fila[0]
+         Validacion.append(id)
+         codigo=fila[1]
+         nombre=fila[2]
+         card=fila[3]
+         conversation=fila[4]
+         confirmation=fila[5]
+         print(f'[{id}] {nombre} \n')
+         print(f'Codigo del user:{codigo}'+"\n")
+         print(f'Card del user:{card}'+"\n")
+         print(f'Conversation del user:{Conversation}'+"\n")
+         print(f'Confirmation del user:{codigo}'+"\n")
 
 
 
@@ -64,3 +63,5 @@ def Consulta():
     else:
         print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
         seleccionar_proyecto()
+
+seleccionar_proyecto()
