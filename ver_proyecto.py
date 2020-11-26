@@ -33,7 +33,17 @@ def seleccionar_proyecto():
 
     consultar()
 
-    Opcion = int(input("Digite el numero del proyecto que desea ver: "))
+    Opcion = input("Digite el numero del proyecto que desea ver: ")
+    
+    while True:
+        
+        if Opcion.isnumeric():
+            Opcion=int(Opcion)
+            break
+
+        Utilidades.clear()
+        print('Solo se aceptan valores numericos,vuelva a intentarlo \n')
+        seleccionar_proyecto()    
 
     Valor_Verificacion= Opcion in Validacion
 

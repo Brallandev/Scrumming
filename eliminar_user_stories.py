@@ -24,9 +24,8 @@ def eliminar(id):
     opcion = input("Ingrese la opcion que desee realizar")
 
     if opcion == "1":
-        sql = 'delete from UserStories where codigo=%s'
-        parametros = (id)
-        cursor.execute(sql, parametros)
+        sql = f"delete from UserStories where codigo='{id}'"
+        cursor.execute(sql)
 
     elif opcion =="2":
         print("Saliendo")

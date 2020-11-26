@@ -18,7 +18,7 @@ def actualizar(id, opcion_actualizar):
     print(opcion_actualizar)
     
     conexion=conexion_BD.get_conexion()
-    cursor=conexion.get_cursor()
+    cursor=conexion_BD.get_cursor()
 
     if opcion_actualizar == 1:
 

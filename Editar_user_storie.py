@@ -15,12 +15,10 @@ def Consulta(id):
 
     global Validacion
 
-    if is_connection==True:
-
-       sql = 'select * from UserStories where id=%s'
-       parametro = (str(id))
-       Validacion = leer_user_stories.consulta_general(id)
-       Cursor.execute(sql, parametro)
+    sql = 'select * from UserStories where id=%s'
+    parametro = (str(id))
+    Validacion = leer_user_stories.consulta_general(id)
+    Cursor.execute(sql, parametro)
     
     conexion_BD.desconectar()
 

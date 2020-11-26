@@ -62,4 +62,16 @@ def consulta_especifica(codigo_user):
 
     return codigo
 
-       
+def buscar_existencia(codigo_user):
+
+    conexion=conexion_BD.get_conexion()
+    cursor=conexion_BD.get_cursor()
+
+    sql=f"select * from userstories where codigo ='{codigo_user}'"
+    cursor.execute(sql)
+    fila=cursor.fetchall()
+    if len(fila)!=0:
+        print(f'El user story con el codigo {codigo_user} ya existe en la base de datos')
+        return True
+    else:
+        return False

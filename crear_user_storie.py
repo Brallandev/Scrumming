@@ -1,5 +1,6 @@
 import psycopg2
 import conexion_BD
+import leer_user_stories
 
 def creacion(codigo,nombre,card,conversation,confirmation,id_proyecto):
 
@@ -26,7 +27,9 @@ def correr(id):
         codigo = input("\n"+"Codigo del user storie: OBLIGATORIO, MAX:45 \n")
         validar = len(codigo)
 
-        if validar <= 45 and validar>0:
+        existe=leer_user_stories.buscar_existencia(codigo)
+
+        if validar <= 45 and validar>0 and existe==False:
             break
 
         print("El codigo no cumple con los parametros, intentelo nuevamente\n")

@@ -23,7 +23,18 @@ mostrar_menu()
 
 def Seleccion ():
 
-    Opcion = int(input("cual opcion desea escoger: "))
+    Opcion = input("cual opcion desea escoger: ")
+
+    while True:
+        
+        if Opcion.isnumeric():
+            Opcion=int(Opcion)
+            break
+
+        Utilidades.clear()
+        print('Solo se aceptan valores numericos,vuelva a intentarlo \n')
+        mostrar_menu()
+        Seleccion()
 
     if Opcion == 1:
 
