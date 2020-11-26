@@ -20,6 +20,9 @@ def seleccionar_user_storie(id_proyecto):
         leer_user_stories.consulta_especifica(Opcion)
         return Opcion
     
+    if len(Validacion) ==0:
+        print('no hay user stories creados hasta la fecha')
+    
     else:
         Utilidades.clear()
         print("\n"+"El valor seleccionado no existe o pertenece a otro proyecto, vuelva a intentarlo"+"\n")

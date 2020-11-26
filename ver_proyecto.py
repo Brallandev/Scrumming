@@ -32,28 +32,32 @@ def seleccionar_proyecto():
     global Validacion
 
     consultar()
-
-    Opcion = input("Digite el numero del proyecto que desea ver: ")
-    
-    while True:
-        
-        if Opcion.isnumeric():
-            Opcion=int(Opcion)
-            break
-
-        Utilidades.clear()
-        print('Solo se aceptan valores numericos,vuelva a intentarlo \n')
-        seleccionar_proyecto()    
-
-    Valor_Verificacion= Opcion in Validacion
-
-    if Valor_Verificacion == True:
-        Proyecto_y_user_stories.Ejecutar_Seleccion(Opcion)
-        Proyecto_y_user_stories.Opciones_UStories()
-    
+    if len(Validacion) == 0:
+        print('no se han creado proyectos hasta la fecha')
+        input('pulse una tecla para continuar')
     else:
-        print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
-        seleccionar_proyecto()
+
+        Opcion = input("Digite el numero del proyecto que desea ver: ")
+
+        while True:
+
+            if Opcion.isnumeric():
+                Opcion=int(Opcion)
+                break
+
+            Utilidades.clear()
+            print('Solo se aceptan valores numericos,vuelva a intentarlo \n')
+            seleccionar_proyecto()    
+
+        Valor_Verificacion= Opcion in Validacion
+
+        if Valor_Verificacion == True:
+            Proyecto_y_user_stories.Ejecutar_Seleccion(Opcion)
+            Proyecto_y_user_stories.Opciones_UStories()
+
+        else:
+            print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
+            seleccionar_proyecto()
 
 
 

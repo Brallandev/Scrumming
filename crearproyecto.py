@@ -29,13 +29,13 @@ def correr_inicio():
 
     while True:
 
-        nombre = input("\n"+"Nombre del Proyecto: ")
+        nombre = input("\n"+"Nombre del Proyecto obligatorio MAX:200: ")
         validar = len(nombre)
 
-        if validar <= 200:
+        if validar <= 200 and validar > 0:
             break
 
-        print("El contenido escrito supera el parametro de 200 caracteres, intentelo nuevamente")
+        print("El contenido escrito no cumple con las condiciones esperadas, intentelo nuevamente")
 
 
     while True:
