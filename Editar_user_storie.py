@@ -68,13 +68,27 @@ def modificacion_BD(id):
 
     Opcion = 0
    
-    Opcion = int(input("Digite la opcion de lo que desea modificar en el user: "))
+    Opcion = (input("Digite la opcion de lo que desea modificar en el user: "))
+
+    while True:
+
+        if  Opcion.isnumeric():
+            Opcion=int(Opcion)
+            break
+
+        Utilidades.clear()
+        print('Solo se aceptan valores numericos,vuelva a intentarlo \n')
+        modificacion_BD(id)
 
     
     if Opcion != 5:
 
         actualizar_user.actualizar(id,Opcion)
         modificacion_BD(id)
+
+    elif Opcion == 5:
+        print("saliendo")
+
 
 def Correr(id):
 

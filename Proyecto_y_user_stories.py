@@ -129,7 +129,6 @@ def Opciones_UStories():
 
         Utilidades.clear()
         Editar_user_storie.Correr(id_proyecto)
-        input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
 
