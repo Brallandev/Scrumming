@@ -29,7 +29,7 @@ def actualizar(id, opcion_actualizar):
          nombre = input("\n"+"Nuevo nombre del user storie: ")
          validar = len(nombre)
 
-         if validar <= 500:
+         if validar <= 500 and validar > 0:
              break
 
          print("El contenido escrito supera el parametro de 500 caracteres, intentelo nuevamente")
