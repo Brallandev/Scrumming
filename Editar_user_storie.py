@@ -3,24 +3,15 @@ import Utilidades
 import actualizar_user
 import Proyecto_y_user_stories
 import leer_user_stories
-from conexion import dc
-
-is_connection=True
-
-try:
-     conexion=psycopg2.connect(**dc)
-     Cursor = conexion.cursor()
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
+import conexion_BD
 
 Validacion = []
 
 #se consulta el id del user storie
 def Consulta(id):
+
+    conexion=conexion_BD.get_conexion()
+    Cursor=conexion_BD.get_cursor()
 
     global Validacion
 
@@ -30,6 +21,8 @@ def Consulta(id):
        parametro = (str(id))
        Validacion = leer_user_stories.consulta_general(id)
        Cursor.execute(sql, parametro)
+    
+    conexion_BD.desconectar()
 
 
 

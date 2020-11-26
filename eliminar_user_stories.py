@@ -1,17 +1,8 @@
 import psycopg2
 
-from  conexion import dc
+import conexion_BD
 is_connection= True
 
-try:
-     conexion=psycopg2.connect(**dc)
-     cursor = conexion.cursor()
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
 
 Menu_eliminar = ( 
     
@@ -24,8 +15,9 @@ Menu_eliminar = (
 def eliminar(id):
 
     global Menu_eliminar
-
-    cursor = conexion.cursor()
+    
+    conexion=conexion_BD.get_conexion()
+    cursor = conexion_BD.get_cursor()
 
     print(Menu_eliminar)
 
@@ -46,5 +38,5 @@ def eliminar(id):
 
 
     conexion.commit()
-    cursor.close()
+    conexion_BD.desconectar()
 

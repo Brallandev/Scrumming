@@ -1,41 +1,30 @@
 import psycopg2
 import Utilidades
 import Proyecto_y_user_stories
-from conexion import dc
-
-is_connection=True
-
-try:
-     conexion=psycopg2.connect(**dc)
-     Cursor = conexion.cursor()
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
-
+import conexion_BD
 
 Validacion = []
 
 def consultar():
 
     global Validacion
+    
+    conexion=conexion_BD.get_conexion()
+    Cursor=conexion_BD.get_cursor()
+        
+    Cursor.execute('select * from Proyectos')
 
-    if is_connection==True:
+    filas= Cursor.fetchall()
 
-        Cursor.execute('select * from Proyectos ')
+    for fila in filas:
+        id=fila[0]
+        Validacion.append(id) 
+        nombre= fila[1]
+        descripcion=fila[2]
+        print(f'[{id}] {nombre} \n')
+        print(f'Descripcion:{descripcion}'+"\n")
 
-        filas= Cursor.fetchall()
-
-        for fila in filas:
-            id=fila[0]
-            Validacion.append(id) 
-            nombre= fila[1]
-            descripcion=fila[2]
-            print(f'[{id}] {nombre} \n')
-            print(f'Descripcion:{descripcion}'+"\n")
-
+    conexion_BD.desconectar()
         
 
 def seleccionar_proyecto():

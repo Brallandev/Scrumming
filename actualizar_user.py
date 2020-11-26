@@ -1,16 +1,7 @@
 import psycopg2
-from  conexion import dc
+import conexion_BD
 is_connection= True
 
-try:
-    conexion=psycopg2.connect(**dc)
-    Cursor = conexion.cursor()
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
     
 #datos de ingreso es opcion_actualizar
 #modificacion recibe la informacion actualizada de alguno de los campos de las opciones dentro del user
@@ -25,10 +16,12 @@ def actualizar(id, opcion_actualizar):
 
     print(id)
     print(opcion_actualizar)
+    
+    conexion=conexion_BD.get_conexion()
+    cursor=conexion.get_cursor()
 
     if opcion_actualizar == 1:
 
-        cursor = conexion.cursor()
         sql = 'update UserStories set nombre=%s where codigo=%s'
 
         while True:
@@ -90,6 +83,7 @@ def actualizar(id, opcion_actualizar):
 
     else:
         input('esta opcion no es correcta')     
-
+    
+    conexion_BD.desconectar()
 
 

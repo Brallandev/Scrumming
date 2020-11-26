@@ -5,22 +5,10 @@ import leer_user_stories
 import Editar_user_storie
 import eliminar_user_stories
 import Detalle_user_storie
-from conexion import dc
+import conexion_BD
 
-is_connection=True
-
+#Variables Globales
 id_proyecto = 0
-
-try:
-     conexion=psycopg2.connect(**dc)
-     Cursor = conexion.cursor()
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
-
 Proyecto = 0
 
 def consulta_especifica(id):
@@ -29,23 +17,25 @@ def consulta_especifica(id):
 
     id_proyecto = id
 
-    if is_connection==True:
-        sql ='select * from Proyectos where id=%s'
-        parametros=(str(id))
-        Cursor.execute(sql,parametros)
+    conexion=conexion_BD.get_conexion()
+    Cursor=conexion_BD.get_cursor()
+    
+    sql ='select * from Proyectos where id=%s'
+    parametros=(str(id))
+    Cursor.execute(sql,parametros)
 
-        filas= Cursor.fetchall()
-        
-        datos=[]
+    filas= Cursor.fetchall()
+    
+    datos=[]
 
-        for fila in filas:
-            datos.append(fila[0])
-            datos.append(fila[1])
-            datos.append(fila[2])
+    for fila in filas:
+        datos.append(fila[0])
+        datos.append(fila[1])
+        datos.append(fila[2])
 
-        
+    conexion_BD.desconectar()    
 
-        return datos
+    return datos
 
 
 

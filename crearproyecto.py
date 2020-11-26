@@ -1,33 +1,24 @@
 import psycopg2
 
-from  conexion import dc
-is_connection= True
-try:
-     conexion=psycopg2.connect(**dc)
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
-
+import conexion_BD
 
 
 def crear (nombre,descripcion):
-    if is_connection==True:
-        cursor = conexion.cursor()
+    
+    conexion=conexion_BD.get_conexion()
+    cursor=conexion_BD.get_cursor()
 
-        sql = 'insert into  Proyectos(nombre, descripcion) values(%s, %s)'
+    sql = 'insert into  Proyectos(nombre, descripcion) values(%s, %s)'
 
-        parametros = (nombre,descripcion)
+    parametros = (nombre,descripcion)
 
-        cursor.execute(sql, parametros)
+    cursor.execute(sql, parametros)
 
-        conexion.commit()
+    conexion.commit()
 
-        cursor.close()
+    conexion_BD.desconectar()
 
-        print("El proyecto "+ nombre +" se creo correctamente")
+    print("El proyecto "+ nombre +" se creo correctamente")
 
     
 

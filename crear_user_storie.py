@@ -1,32 +1,21 @@
 import psycopg2
-
-from  conexion import dc
-is_connection= True
-try:
-     conexion=psycopg2.connect(**dc)
-
-except :
-    print("No se pudo conectar a la base de datos")
-    is_connection=False
-    input("\n"+"Pulse una tecla para Salir")
-    exit()
-
+import conexion_BD
 
 def creacion(codigo,nombre,card,conversation,confirmation,id_proyecto):
 
-    if is_connection==True:
-        cursor = conexion.cursor()
+    conexion= conexion_BD.get_conexion()
+    cursor = conexion_BD.get_cursor()
 
-        sql= 'insert into UserStories(codigo,nombre,card,conversation,confirmation,idproyecto) values (%s, %s, %s, %s, %s, %s)'
+    sql= 'insert into UserStories(codigo,nombre,card,conversation,confirmation,idproyecto) values (%s, %s, %s, %s, %s, %s)'
 
-        parametros= (codigo,nombre,card,conversation,confirmation,id_proyecto)
-        cursor.execute(sql, parametros)
+    parametros= (codigo,nombre,card,conversation,confirmation,id_proyecto)
+    cursor.execute(sql, parametros)
 
-        conexion.commit()
+    conexion.commit()
 
-        cursor.close()
+    conexion_BD.desconectar()
 
-        print("El User Storie "+ nombre +" se creo correctamente")
+    print("El User Storie "+ nombre +" se creo correctamente")
 
 
 def correr(id):
