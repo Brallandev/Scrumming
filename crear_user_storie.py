@@ -52,20 +52,22 @@ def correr():
         print("El contenido escrito supera el parametro de 500 caracteres, intentelo nuevamente")
 
 
+    
     while True:
-
-        card = input("\n"+"Card del user storie: ")
+     card = input("\n"+"Card del user storie: ")
         
 
+    
     while True:
-
-        conversation = input("\n"+"conversation del user storie: ")
+     conversation = input("\n"+"conversation del user storie: ")
         
+    
     while True:
-
-        confirmation = input("\n"+"Confirmation del user storie: ")
+     confirmation = input("\n"+"Confirmation del user storie: ")
     
     creacion(codigo,nombre,card,conversation,confirmation)
 
     input("pulse la tecla para continuar: ")
+    
        
+correr()

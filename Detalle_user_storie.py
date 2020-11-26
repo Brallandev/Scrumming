@@ -6,8 +6,8 @@ from conexion import dc
 is_connection=True
 
 try:
-     conexion=psycopg2.connect(**dc)
-     Cursor = conexion.cursor()
+    conexion=psycopg2.connect(**dc)
+    Cursor = conexion.cursor()
 
 except :
     print("No se pudo conectar a la base de datos")
@@ -19,38 +19,39 @@ Validacion = []
 
 #Se hace la consulta del User storie en la base de datos
 
-def Consulta():
- global Validacion
-        
+def Consulta(id):
+
     if is_connection==True:
 
-     Cursor.execute('select * from UserStories')
+       sql = 'select * from UserStories where id=%s'
+       parametro = (id)
+       Cursor.execute(sql, parametro)
 
-     filas= Cursor.fetchall()
+       filas = Cursor.fetchall()
 
-      for fila in filas:
-         id=fila[0]
-         Validacion.append(id)
-         codigo=fila[1]
-         nombre=fila[2]
-         card=fila[3]
-         conversation=fila[4]
-         confirmation=fila[5]
-         print(f'[{id}] {nombre} \n')
-         print(f'Codigo del user:{codigo}'+"\n")
-         print(f'Card del user:{card}'+"\n")
-         print(f'Conversation del user:{Conversation}'+"\n")
-         print(f'Confirmation del user:{codigo}'+"\n")
+       Dato = []
 
 
+       for fila in filas:
+            
+         Dato.append(fila[0])
+         Dato.append(fila[1])
+         Dato.append(fila[2])
+         Dato.append(fila[3])
+         Dato.append(fila[4])
+         Dato.append(fila[5])
 
+       Cursor.close()
+       return Dato
+
+    
 
 #Se seleccionara el user storie
-  def seleccionar_user_storie():
+def seleccionar_user_storie():
 
     global Validacion
 
-    consulta()
+    Consulta(id)
 
     Opcion = int(input("Digite el numero del User Storie que se mostrara: "))
 
@@ -62,6 +63,6 @@ def Consulta():
     
     else:
         print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
-        seleccionar_proyecto()
+        seleccionar_user_storie()
 
-seleccionar_proyecto()
+seleccionar_user_storie()

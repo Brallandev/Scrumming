@@ -30,7 +30,7 @@ def consultar():
 
         for fila in filas:
             id=fila[0]
-            Validacion.append(id)
+            Validacion.append(id) 
             nombre= fila[1]
             descripcion=fila[2]
             print(f'[{id}] {nombre} \n')

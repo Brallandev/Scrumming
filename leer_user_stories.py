@@ -15,16 +15,18 @@ except :
     input("\n"+"Pulse una tecla para Salir")
     exit()
 
+  
+
 
 
 
 def consultar():
 
     global Validacion
-
+    Validacion = []
     if is_connection==True:
 
-        Cursor.execute('select * from UserStoires ')
+        Cursor.execute('select * from UserStories ')
 
         filas= Cursor.fetchall()
 
