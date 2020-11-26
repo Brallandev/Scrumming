@@ -26,7 +26,7 @@ def consulta_general(id_proyecto):
 
         sql='select * from UserStories where idproyecto=%s'
 
-        parametros = (id_proyecto)
+        parametro = (str(id_proyecto))
         Cursor.execute(sql, parametro)
 
         filas= Cursor.fetchall()
@@ -37,35 +37,39 @@ def consulta_general(id_proyecto):
             nombre= fila[2]
             print(f'Codigo:{codigo}---Nombre:{nombre}\n\n')
 
-    return validacion;    
+    return Validacion;    
             
 def consulta_especifica(codigo_user):
     
     if is_connection==True:
 
-       sql = 'select * from UserStories where codigo=%s'
-       parametro = (codigo_user)
-       Cursor.execute(sql, parametro)
-       filas = Cursor.fetchall()
+        sql = 'select * from UserStories where codigo=%s'
+        parametro = (str(codigo_user))
+        Cursor.execute(sql, parametro)
+        filas = Cursor.fetchall()
 
-       for fila in filas:
-           codigo=fila[1]
-           nombre=fila[2]
-           card=fila[3]
-           conversation=fila[4]
-           confirmation=fila[5]
+        for fila in filas:
+            codigo=fila[1]
+            nombre=fila[2]
+            card=fila[3]
+            conversation=fila[4]
+            confirmation=fila[5]
 
-           print('==================================\n')
-           print(f'[{codigo}] {Nombre}\n')
-           print('==================================\n')
-           print(f'card->{card}\n')
-           print(f'conversation->{conversation}\n')
-           print(f'confirmation->{confirmation}\n')
-           print('\n\n')
+            print('==================================\n')
+            print(f'[{codigo}] {nombre}\n')
+            print('==================================\n')
+            print(f'card->{card}\n')
+            print(f'conversation->{conversation}\n')
+            print(f'confirmation->{confirmation}\n')
+            print('\n\n')
         
         Cursor.close()
 
-        return codigo
+    return codigo
 
+consulta_general(1)    
+consulta_especifica(1)
+
+input(':)))))))))')
        
        
