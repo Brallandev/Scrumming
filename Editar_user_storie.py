@@ -71,3 +71,7 @@ def modificacion_BD():
     
     else:
         print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
+
+
+seleccionar_user_storie()
+modificacion_BD()

@@ -14,6 +14,7 @@ except :
     input("\n"+"Pulse una tecla para Salir")
     exit()
 
+Proyecto = 0
 
 def consulta_especifica(id):
 
@@ -40,6 +41,8 @@ def consulta_especifica(id):
 
 def Ejecutar_Seleccion(Opcion):
 
+    global Proyecto
+
     Utilidades.clear()
 
     #recibe los datos del proyecto selecionado en un arreglo.
@@ -50,22 +53,33 @@ def Ejecutar_Seleccion(Opcion):
 
     fila = 0 
 
+    p1=0
+    p2=0
+    p3=0
+
     while fila < contador:
 
         if fila == 0:
 
-            print("Codigo de Proyecto: "+ str( buscar[fila])+"\n")
+            p1= ("Codigo de Proyecto: "+ str( buscar[fila])+"\n")
+            print(p1)
 
 
         elif fila == 1:
 
-            print("Nombre de Proyecto: "+ str(buscar[fila])+"\n")
+            p2 = ("Nombre de Proyecto: "+ str(buscar[fila])+"\n")
+            print(p2)
 
         elif fila == 2:
 
-            print("Descripcion del Proyecto: "+ str(buscar[fila])+"\n")
+            p3 = ("Descripcion del Proyecto: "+ str(buscar[fila])+"\n")
+            print(p3)
+
         
         fila = fila+1
+
+    Proyecto=(p1+p2+p3)
+    
 
  
 Menu_UStroies = (
@@ -77,7 +91,9 @@ Menu_UStroies = (
 
 def Opciones_UStories():
 
-    print("Esto esta corriendo")
+    global Proyecto
+
+    print(Proyecto)
 
     print(Menu_UStroies)
 
@@ -94,7 +110,7 @@ def Opciones_UStories():
     elif Opcion == 2:
 
         Utilidades.clear()
-        print("Crear User Storie")
+        print("Ver User Storie")
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
@@ -102,7 +118,7 @@ def Opciones_UStories():
     elif Opcion == 3:
 
         Utilidades.clear()
-        print("Crear User Storie")
+        print("Editar User Storie")
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
@@ -110,7 +126,7 @@ def Opciones_UStories():
     elif Opcion == 4:
 
         Utilidades.clear()
-        print("Crear User Storie")
+        print("Eliminar User Storie")
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
@@ -118,7 +134,7 @@ def Opciones_UStories():
     elif Opcion == 5:
 
         Utilidades.clear()
-        print("Crear User Storie")
+        print("Salir")
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()

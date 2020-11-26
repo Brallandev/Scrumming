@@ -57,7 +57,7 @@ def seleccionar_proyecto():
         seleccionar_proyecto()
 
 
-seleccionar_proyecto()
+
 
 
 
