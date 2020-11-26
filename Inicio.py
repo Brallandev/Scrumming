@@ -9,11 +9,15 @@ Menu = (
     "------Menu Scrum------"+"\n"
     "1) Crear Proyecto"+"\n"
     "2) Ver Proyecto"+"\n"
-    "3) Eliminar Proyecto"
+    "3) Eliminar Proyecto"+"\n"
     "4) Salir"+"\n"
     )
 
-print(Menu)
+def mostrar_menu():
+    Utilidades.titulo()
+    print(Menu)
+
+mostrar_menu()
 
 # Seleccionar Opcion
 
@@ -26,14 +30,14 @@ def Seleccion ():
         Utilidades.clear()
         crearproyecto.correr_inicio()
         Utilidades.clear()
-        print(Menu)
+        mostrar_menu()
         Seleccion()  
         
     elif Opcion == 2:
         Utilidades.clear()
         ver_proyecto.seleccionar_proyecto()
         Utilidades.clear()
-        print(Menu)
+        mostrar_menu()
         Seleccion()  
     
     elif Opcion == 3:
@@ -42,7 +46,7 @@ def Seleccion ():
         Opcion = int(input("cual opcion desea escoger: "))
         eliminar_proyecto.eliminar(Opcion)
         Utilidades.clear()
-        print(Menu)
+        mostrar_menu()
         Seleccion()
         
 

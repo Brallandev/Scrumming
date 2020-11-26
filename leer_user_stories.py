@@ -30,12 +30,18 @@ def consulta_general(id_proyecto):
         Cursor.execute(sql, parametro)
 
         filas= Cursor.fetchall()
+        
+        print('\n USER STORIES DEL PROYECTO: \n')
+        print('---------------------------- '+"\n")
+        
+        if len(filas)==0:
+            print('Este proyecto no tiene User Stories \n')
 
         for fila in filas:
             codigo=fila[1]
             Validacion.append((codigo))
             nombre= fila[2]
-            print(f'Codigo:{codigo}---Nombre:{nombre}\n\n')
+            print(f'Codigo:[{codigo}]       Nombre:{nombre}\n\n')
 
     return Validacion    
             
@@ -43,9 +49,8 @@ def consulta_especifica(codigo_user):
     
     if is_connection==True:
 
-        sql = 'select * from UserStories where codigo=%s'
-        parametro = ((codigo_user))
-        Cursor.execute(sql, parametro)
+        sql = f"select * from UserStories where codigo='{codigo_user}'"
+        Cursor.execute(sql)
         filas = Cursor.fetchall()
 
         for fila in filas:

@@ -4,6 +4,7 @@ import crear_user_storie
 import leer_user_stories
 import Editar_user_storie
 import eliminar_user_stories
+import Detalle_user_storie
 from conexion import dc
 
 is_connection=True
@@ -66,8 +67,13 @@ def Ejecutar_Seleccion(Opcion):
     p1=0
     p2=0
     p3=0
+    print('DATOS DEL PROYECTO \n')
+    print('----------------------------')
 
     while fila < contador:
+
+
+
 
         if fila == 0:
 
@@ -93,10 +99,10 @@ def Ejecutar_Seleccion(Opcion):
 
  
 Menu_UStroies = (
-    "1) Crear User Storie"+"\n"
-    "2) Ver User Storie"+"\n"
-    "3) Editar User Storie"+"\n"
-    "4) Eliminar User Storie"+"\n"
+    "1) Crear User Story"+"\n"
+    "2) Ver User Story"+"\n"
+    "3) Editar User Story"+"\n"
+    "4) Eliminar User Story"+"\n"
     "5) Salir"+"\n")
 
 def Opciones_UStories():
@@ -124,11 +130,8 @@ def Opciones_UStories():
         Opciones_UStories()
 
     elif Opcion == "2":
-
         Utilidades.clear()
-        leer_user_stories.consulta_general(id_proyecto)
-        codigo_user = input("Digite el codigo del user storie que desea ver: ")
-        leer_user_stories.consulta_especifica(codigo_user)
+        codigo_user = Detalle_user_storie.seleccionar_user_storie(id_proyecto)
         Utilidades.clear()
         Opciones_UStories()
     
@@ -143,8 +146,7 @@ def Opciones_UStories():
     elif Opcion == "4":
 
         Utilidades.clear()
-        leer_user_stories.consulta_general(id_proyecto)
-        codigo_user = input("Digite el codigo del user storie que desea ver: ")
+        codigo_user = Detalle_user_storie.seleccionar_user_storie(id_proyecto)
         eliminar_user_stories.eliminar(codigo_user)
         input("Pulse una tecla para continuar")
         Utilidades.clear()

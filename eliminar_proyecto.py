@@ -17,7 +17,8 @@ except :
 
 Menu_eliminar = ( 
     
-    "Esta seguro de que quiere eliminar este User UserStories "+"\n"
+    "Esta seguro de que quiere eliminar este Proyecto"+"\n"
+    "RECUERDE QUE LOS USER STORIES DEL PROYECTO SERAN ELIMINADOS"+"\n"
     "1) Si"+"\n"
     "2) No"+"\n"
     )
@@ -30,18 +31,18 @@ def eliminar(id):
 
     print(Menu_eliminar)
 
-    opcion = input("Ingrese la opcion que desee realizar")
+    opcion = input("Ingrese la opcion que desee realizar:")
 
     if opcion == "1":
-        sql = 'delete from Proyectos where codigo=%s'
-        parametros = (id)
+        sql = 'delete from Userstories where idproyecto=%s; delete from proyectos where id=%s'
+        parametros = (str(id),str(id))
         cursor.execute(sql, parametros)
 
     elif opcion =="2":
         print("Saliendo")
 
     else:
-        input("la opcion escogida no es valida, pulse una tecla para volver a escojer")
+        input("la opcion escogida no es valida, pulse una tecla para volver a escojer \n")
         eliminar(id)
 
 

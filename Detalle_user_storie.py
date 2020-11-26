@@ -1,6 +1,7 @@
 import psycopg2
 import Utilidades
 import Proyecto_y_user_stories
+import leer_user_stories
 from conexion import dc
 
 is_connection=True
@@ -17,22 +18,22 @@ except :
     
 
 #Se seleccionara el user storie
-def seleccionar_user_storie():
+def seleccionar_user_storie(id_proyecto):
 
     global Validacion
 
-    Consulta(id)
+    Validacion=leer_user_stories.consulta_general(str(id_proyecto))
 
-    Opcion = int(input("Digite el numero del User Storie que se mostrara: "))
+    Opcion = input("Digite el codigo del user storie:")
 
     Valor_Verificacion= Opcion in Validacion
 
     if Valor_Verificacion == True:
-        Proyecto_y_user_stories.Ejecutar_Seleccion(Opcion)
-        Proyecto_y_user_stories.Opciones_UStories()
+        leer_user_stories.consulta_especifica(Opcion)
+        return Opcion
     
     else:
-        print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
-        seleccionar_user_storie()
+        Utilidades.clear()
+        print("\n"+"El valor seleccionado no existe o pertenece a otro proyecto, vuelva a intentarlo"+"\n")
+        seleccionar_user_storie(id_proyecto)
 
-seleccionar_user_storie()

@@ -41,20 +41,21 @@ def seleccionar_user_storie():
 
     print(Validacion)
 
-    Opcion = int(input("Digite el numero del User Storie que quiere modificar: "))
+    Opcion = input("Digite el [CODIGO] del User Story que quiere modificar: ")
 
     Valor_Verificacion= Opcion in Validacion
 
     if Valor_Verificacion == True:
 
         modificacion_BD(Opcion)
-        input("esto esta sirviendo presione para continuar: ")
-
-    
+        input("Modificacion realizada con exito, Pulse una tecla para continuar")
     
     else:
-        print("\n"+"El valor seleccionado no existe, vuelva a intentarlo"+"\n")
-        input("Esto no esta sirviendo")
+        print("\n"+"El valor seleccionado no existe o pertenece a otro proyecto"+"\n")
+        seleccionar_user_storie()
+
+
+        
 
 
 
@@ -65,7 +66,8 @@ def modificacion_BD(id):
     global Validacion
 
     Utilidades.clear()
-
+    print('\n'+"OPCIONES DE EDICION"+"\n")
+    print("-------------------------------------"+"\n")
     print("¿Que desea modificar del user storie?"+"\n")
     print("1) Nombre"+"\n")
     print("2) Card"+"\n")

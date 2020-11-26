@@ -9,7 +9,7 @@ create table Proyectos(
 
 create table UserStories (
 id serial primary key,
-	codigo varchar(45) not null,
+	codigo varchar(45) not null unique,
 	nombre varchar(500) not null,
 	card TEXT,
 	conversation TEXT,

@@ -34,37 +34,32 @@ def correr(id):
     print("---CREACION DE USER STORIE---")
 
     while True:
-        codigo = input("\n"+"Codigo del user storie: ")
+        codigo = input("\n"+"Codigo del user storie: OBLIGATORIO, MAX:45 \n")
         validar = len(codigo)
 
-        if validar <= 45:
+        if validar <= 45 and validar>0:
             break
 
-        print("El contenido escrito supera el parametro de 45 caracteres, intentelo nuevamente")
+        print("El codigo no cumple con los parametros, intentelo nuevamente\n")
     
 
     while True:
 
-        nombre = input("\n"+"Nombre del user storie: ")
+        nombre = input("\n"+"Nombre del user storie:OBLIGATORIO, MAX:500\n")
         validar = len(nombre)
 
-        if validar <= 500:
+        if validar <= 500 and validar>0:
             break
 
-        print("El contenido escrito supera el parametro de 500 caracteres, intentelo nuevamente")
+        print("El Nombre no cumple con los parametros, intentelo nuevamente\n")
 
 
     
     
     card = input("\n"+"Card del user storie: ")
-     
-
-    
-    
+            
     conversation = input("\n"+"conversation del user storie: ")
-        
-    
-    
+              
     confirmation = input("\n"+"Confirmation del user storie: ")
 
     id_proyecto = id
