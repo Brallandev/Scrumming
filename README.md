@@ -15,5 +15,6 @@ Los Integrantes que componen este equipo de trabajo son
 2. Juan Esteban Gomez.
 3. Alejandro Ballesteros.
 4. Brallan Andres Laverde Perez.
+5. Kevin Niño Gonzalez
 
 ---
