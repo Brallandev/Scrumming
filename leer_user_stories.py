@@ -15,25 +15,57 @@ except :
     input("\n"+"Pulse una tecla para Salir")
     exit()
 
-  
 
-
-
-
-def consultar():
+def consulta_general(id_proyecto):
 
     global Validacion
+
     Validacion = []
+
     if is_connection==True:
 
-        Cursor.execute('select * from UserStories ')
+        sql='select * from UserStories where idproyecto=%s'
+
+        parametros = (id_proyecto)
+        Cursor.execute(sql, parametro)
 
         filas= Cursor.fetchall()
 
         for fila in filas:
-            id=fila[0]
-            Validacion.append(id)
-            nombre= fila[1]
-            descripcion=fila[2]
-            print(f'[{id}] {nombre} \n')
-            print(f'Descripcion:{descripcion}'+"\n")
+            codigo=fila[1]
+            Validacion.append(codigo)
+            nombre= fila[2]
+            print(f'Codigo:{codigo}---Nombre:{nombre}\n\n')
+
+    return validacion;    
+            
+def consulta_especifica(codigo_user):
+    
+    if is_connection==True:
+
+       sql = 'select * from UserStories where codigo=%s'
+       parametro = (codigo_user)
+       Cursor.execute(sql, parametro)
+       filas = Cursor.fetchall()
+
+       for fila in filas:
+           codigo=fila[1]
+           nombre=fila[2]
+           card=fila[3]
+           conversation=fila[4]
+           confirmation=fila[5]
+
+           print('==================================\n')
+           print(f'[{codigo}] {Nombre}\n')
+           print('==================================\n')
+           print(f'card->{card}\n')
+           print(f'conversation->{conversation}\n')
+           print(f'confirmation->{confirmation}\n')
+           print('\n\n')
+        
+        Cursor.close()
+
+        return codigo
+
+       
+       

@@ -14,7 +14,7 @@ id serial primary key,
 	card TEXT,
 	conversation TEXT,
 	confirmation TEXT,
-	idproyecto int   references Proyectos (id) 
+	idproyecto int references Proyectos (id) not null
 );
 
 

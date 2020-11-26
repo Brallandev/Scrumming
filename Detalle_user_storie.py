@@ -14,36 +14,6 @@ except :
     is_connection=False
     input("\n"+"Pulse una tecla para Salir")
     exit()
-
-Validacion = []
-
-#Se hace la consulta del User storie en la base de datos
-
-def Consulta(id):
-
-    if is_connection==True:
-
-       sql = 'select * from UserStories where id=%s'
-       parametro = (id)
-       Cursor.execute(sql, parametro)
-
-       filas = Cursor.fetchall()
-
-       Dato = []
-
-
-       for fila in filas:
-            
-         Dato.append(fila[0])
-         Dato.append(fila[1])
-         Dato.append(fila[2])
-         Dato.append(fila[3])
-         Dato.append(fila[4])
-         Dato.append(fila[5])
-
-       Cursor.close()
-       return Dato
-
     
 
 #Se seleccionara el user storie
