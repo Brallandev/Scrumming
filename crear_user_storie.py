@@ -12,13 +12,14 @@ except :
     exit()
 
 
-def creacion(codigo,nombre,card,conversation,confirmation):
+def creacion(codigo,nombre,card,conversation,confirmation,id_proyecto):
+
     if is_connection==True:
         cursor = conexion.cursor()
 
-        sql= 'insert into UserStories(codigo,nombre,card,conversation,confirmation) values (%s, %s, %s, %s, %s)'
+        sql= 'insert into UserStories(codigo,nombre,card,conversation,confirmation,idproyecto) values (%s, %s, %s, %s, %s, %s)'
 
-        parametros= (codigo,nombre,card,conversation,confirmation)
+        parametros= (codigo,nombre,card,conversation,confirmation,id_proyecto)
         cursor.execute(sql, parametros)
 
         conexion.commit()
@@ -28,7 +29,8 @@ def creacion(codigo,nombre,card,conversation,confirmation):
         print("El User Storie "+ nombre +" se creo correctamente")
 
 
-def correr():
+def correr(id):
+
     print("---CREACION DE USER STORIE---")
 
     while True:
@@ -64,10 +66,11 @@ def correr():
     
     
     confirmation = input("\n"+"Confirmation del user storie: ")
+
+    id_proyecto = id
     
-    creacion(codigo,nombre,card,conversation,confirmation)
+    creacion(codigo,nombre,card,conversation,confirmation,id_proyecto)
 
     input("pulse la tecla para continuar: ")
     
        
-correr()

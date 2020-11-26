@@ -18,7 +18,7 @@ except :
 
 def consulta_general(id_proyecto):
 
-    global Validacion
+    
 
     Validacion = []
 
@@ -33,18 +33,18 @@ def consulta_general(id_proyecto):
 
         for fila in filas:
             codigo=fila[1]
-            Validacion.append(codigo)
+            Validacion.append((codigo))
             nombre= fila[2]
             print(f'Codigo:{codigo}---Nombre:{nombre}\n\n')
 
-    return Validacion;    
+    return Validacion    
             
 def consulta_especifica(codigo_user):
     
     if is_connection==True:
 
         sql = 'select * from UserStories where codigo=%s'
-        parametro = (str(codigo_user))
+        parametro = ((codigo_user))
         Cursor.execute(sql, parametro)
         filas = Cursor.fetchall()
 
@@ -62,14 +62,10 @@ def consulta_especifica(codigo_user):
             print(f'conversation->{conversation}\n')
             print(f'confirmation->{confirmation}\n')
             print('\n\n')
+            input("Pulse una tecla para continuar: ")
         
-        Cursor.close()
+        
 
     return codigo
 
-consulta_general(1)    
-consulta_especifica(1)
-
-input(':)))))))))')
-       
        

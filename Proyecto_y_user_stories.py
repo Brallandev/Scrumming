@@ -1,8 +1,14 @@
 import psycopg2
 import Utilidades
+import crear_user_storie
+import leer_user_stories
+import Editar_user_storie
+import eliminar_user_stories
 from conexion import dc
 
 is_connection=True
+
+id_proyecto = 0
 
 try:
      conexion=psycopg2.connect(**dc)
@@ -18,6 +24,10 @@ Proyecto = 0
 
 def consulta_especifica(id):
 
+    global id_proyecto
+
+    id_proyecto = id
+
     if is_connection==True:
         sql ='select * from Proyectos where id=%s'
         parametros=(str(id))
@@ -32,7 +42,7 @@ def consulta_especifica(id):
             datos.append(fila[1])
             datos.append(fila[2])
 
-        Cursor.close()
+        
 
         return datos
 
@@ -62,18 +72,18 @@ def Ejecutar_Seleccion(Opcion):
         if fila == 0:
 
             p1= ("Codigo de Proyecto: "+ str( buscar[fila])+"\n")
-            print(p1)
+            
 
 
         elif fila == 1:
 
             p2 = ("Nombre de Proyecto: "+ str(buscar[fila])+"\n")
-            print(p2)
+            
 
         elif fila == 2:
 
             p3 = ("Descripcion del Proyecto: "+ str(buscar[fila])+"\n")
-            print(p3)
+            
 
         
         fila = fila+1
@@ -93,54 +103,71 @@ def Opciones_UStories():
 
     global Proyecto
 
+    global id_proyecto
+
     print(Proyecto)
+
+    leer_user_stories.consulta_general(id_proyecto)
 
     print(Menu_UStroies)
 
-    Opcion = int(input("cual opcion desea escoger: "))
+    Opcion = (input("cual opcion desea escoger: "))
 
-    if Opcion == 1:
+
+    if Opcion == "1":
         
         Utilidades.clear()
         print("Crear User Storie")
+        crear_user_storie.correr(id_proyecto)
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
 
-    elif Opcion == 2:
+    elif Opcion == "2":
 
         Utilidades.clear()
-        print("Ver User Storie")
-        input("Pulse una tecla para continuar")
+        leer_user_stories.consulta_general(id_proyecto)
+        codigo_user = input("Digite el codigo del user storie que desea ver: ")
+        leer_user_stories.consulta_especifica(codigo_user)
         Utilidades.clear()
         Opciones_UStories()
     
-    elif Opcion == 3:
+    elif Opcion == "3":
 
         Utilidades.clear()
-        print("Editar User Storie")
+        Editar_user_storie.Correr(id_proyecto)
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
 
-    elif Opcion == 4:
+    elif Opcion == "4":
 
         Utilidades.clear()
-        print("Eliminar User Storie")
+        leer_user_stories.consulta_general(id_proyecto)
+        codigo_user = input("Digite el codigo del user storie que desea ver: ")
+        eliminar_user_stories.eliminar(codigo_user)
         input("Pulse una tecla para continuar")
         Utilidades.clear()
         Opciones_UStories()
 
-    elif Opcion == 5:
+    elif Opcion == "5":
 
         Utilidades.clear()
-        print("Salir")
-        input("Pulse una tecla para continuar")
+        input("Pulse una tecla para Salir")
         Utilidades.clear()
-        Opciones_UStories()
+
     
     else:
 
         input("La seleccion escogida no existe, pulse cualquier tecla para intentarlo nuevamente")
 
         Opciones_UStories()
+
+def id_proyecto_Peticion():
+
+    global id_proyecto
+    
+    idn = id_proyecto
+
+    return idn
+
