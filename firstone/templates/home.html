@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        
+        
+        .contenedor{
+            background: papayawhip;
+            height: 600px;
+            width: 600px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            border-style: solid;
+            border-color: black;
+        }
+        .tar{
+            background-color: blueviolet;
+            border-radius: 1cm;
+            border-style: dashed;
+            border-color: black;
+        }
+        div :nth-child(1){
+            grid-row: 1;
+            grid-column: 1;
+        }
+        div :nth-child(2){
+            grid-row: 2;
+            grid-column: 2;
+        }
+        div :nth-child(3){
+            grid-column: 3;
+            grid-row: 3;
+        }
+        div :nth-child(4){
+            grid-row: 4;
+            grid-column: 4;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="contenedor">
+        <div class="tar" ></div>
+        <div class="tar" ></div>
+        <div class="tar" ></div>
+        <div class="tar" ></div>
+
+    </div>
+</body>
+</html>
